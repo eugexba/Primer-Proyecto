@@ -1,3 +1,4 @@
+
 from random import choice 
 
 palabras = ["otorrinolaringologo", "parabrisas", "desierto", "estudiantes"]
@@ -27,3 +28,26 @@ def imprimir_nuevo_tablero(palabra_seleccionada):
           
  
      print(lista_oculta)
+     return lista_oculta
+
+def pedir_letra(palabra_seleccionada, lista_oculta, letras_incorrectas):
+     valida = False 
+     while not valida:
+          letra = input("Ingrese una letra!: ").lower()
+          valida = "a" <= letra <= "z" and len(letra) == 1
+          if not valida:
+               print("Error. Ingrese una letra!")
+          else: 
+               valida = letra not in palabra_seleccionada + lista_oculta
+               if not valida:
+                    print("Letra repetida")
+     return letra 
+
+def comprobar_letra(letra, palabra_seleccionada,letras_incorrectas):
+     palabra_seleccionada, letras_unicas = seleccionar_palabra(palabras)
+     if letra in palabra_seleccionada:
+          print("Acertaste una letra! ")
+          actualizar_tablero(letra, palabra_seleccionada,lista_oculta)
+     else:
+          print("Fallaste!")
+          letras_incorrectas.append(letra)
