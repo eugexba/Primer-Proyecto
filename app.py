@@ -23,6 +23,10 @@ def imprimir_nuevo_tablero(palabra_seleccionada):
           if e in letras_correctas:
                lista_oculta.append(e)
 
+          elif len(letras_incorrectas) > 0:
+               print("letra incorrecta: ", *letras_incorrectas)
+               print()
+
           else:
                lista_oculta.append("-")
           
@@ -43,7 +47,7 @@ def pedir_letra(palabra_seleccionada, lista_oculta, letras_incorrectas):
                     print("Letra repetida")
      return letra 
 
-def comprobar_letra(letra, palabra_seleccionada,letras_incorrectas):
+def comprobar_letra(letra, palabra_seleccionada,letras_incorrectas, lista_oculta):
      palabra_seleccionada, letras_unicas = seleccionar_palabra(palabras)
      if letra in palabra_seleccionada:
           print("Acertaste una letra! ")
@@ -51,3 +55,26 @@ def comprobar_letra(letra, palabra_seleccionada,letras_incorrectas):
      else:
           print("Fallaste!")
           letras_incorrectas.append(letra)
+
+def actualizar_tablero(letra, palabra_seleccionada, lista_oculta)
+     for indice, letra_palabra in enumerate (palabra_seleccionada):
+          if letra == letra_palabra:
+               lista_oculta[indice] = letra 
+
+def comprobar_palabra(palabra_seleccionada):
+     return "_" not in palabra_seleccionada
+
+def juego_finalizado(palabra_seleccionada):
+
+
+     palabra_seleccionada, letras_incorrectas, imprimir_nuevo_tablero = juego_finalizado(palabras)
+     while len(letras_incorrectas):
+          imprimir_nuevo_tablero(palabra_seleccionada, letras_incorrectas)
+          letras = pedir_letra(palabra_seleccionada, letras_incorrectas)
+          comprobar_letra(letra, palabra_seleccionada, letras_incorrectas,imprimir_nuevo_tablero)
+          if comprobar_palabra(imprimir_nuevo_tablero):
+               print("Lo lograste!")
+          else:
+               print(f"Perdiste! la palabra era: {palabra_seleccionada}")
+
+     imprimir_nuevo_tablero(palabra_seleccionada, letras_incorrectas)
